@@ -14,18 +14,22 @@
   "observability": {
     "enabled": true
   },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_id": "817f8006-add5-42cc-b9d3-2f7f61ceb1dd",
-      "experimental_remote": true
+  "env": {
+    "stage": {
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_id": "817f8006-add5-42cc-b9d3-2f7f61ceb1dd",
+          "experimental_remote": true
+        }
+      ],
+      "services": [
+        {
+          "binding": "DATA_SERVICE",
+          "service": "data-service-stage",
+          "experimental_remote": true
+        }
+      ]
     }
-  ],
-  "services": [
-    {
-      "binding": "DATA_SERVICE",
-      "service": "data-service",
-      "experimental_remote": true
-    }
-  ]
+  }
 }
