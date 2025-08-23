@@ -4,13 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Globe, Shield, Zap, Sparkles } from "lucide-react";
 import { authClient } from "@/components/auth/client";
 import { LoginPopup } from "@/components/auth/login-popup";
+import { useNavigate } from "@tanstack/react-router";
 
 export function HeroSection() {
   const { data } = authClient.useSession();
+  const nav = useNavigate();
 
   const handleStartFree = () => {
     if (data) {
-      window.location.href = "/app";
+      nav({ to: "/app" });
     }
   };
 
