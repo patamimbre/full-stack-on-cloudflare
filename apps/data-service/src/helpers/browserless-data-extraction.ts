@@ -11,7 +11,7 @@ export async function extractDataFromBrowserless(env: Env, destinationUrl: strin
 		method: 'POST',
 		url: 'https://production-sfo.browserless.io/chrome/bql',
 		params: {
-			token: env.BROWSERLESS_TOKEN,
+			token: process.env.BROWSERLESS_TOKEN,
 			proxy: 'residential',
 			proxyCountry: 'us',
 			humanlike: true,
@@ -69,12 +69,12 @@ export async function extractDataFromBrowserless(env: Env, destinationUrl: strin
 	};
 }
 
-// (async () => {
-// 	const data = await extractDataFromBrowserless(
-// 		{
-// 			DB: {} as D1Database,
-// 		} as any,
-// 		'https://www.mediamarkt.es/es/product/_tv-qled-50-samsung-qe50q7f-2025-uhd-4k-ai-q4-prozessor-smart-tv-schwarz-157462190.html'
-// 	);
-// 	console.log(data);
-// })();
+(async () => {
+	const data = await extractDataFromBrowserless(
+		{
+			DB: {} as D1Database,
+		} as any,
+		'https://www.mediamarkt.es/es/product/_tv-qled-50-samsung-qe50q7f-2025-uhd-4k-ai-q4-prozessor-smart-tv-schwarz-157462190.html'
+	);
+	console.log(data);
+})();

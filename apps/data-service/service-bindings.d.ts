@@ -6,5 +6,4 @@ interface DestinationStatusEvaluationParams {
 
 interface Env extends Cloudflare.Env {
 	DESTINATION_EVALUATION_WORKFLOW: Workflow<DestinationStatusEvaluationParams>;
-	BROWSERLESS_TOKEN: string;
 }
