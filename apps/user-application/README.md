@@ -6,7 +6,7 @@ This template provides a fully integrated setup of TanStack React Router, tRPC, 
 
 - [TanStack Router](https://tanstack.com/router) for type-safe, powerful routing
 - [TanStack Query](https://tanstack.com/query) for data fetching and caching
-- [tRPC](https://trpc.io/) for end-to-end typesafe APIs
+- [tRPC](https://trpc.io/) for end-to-end typesafe APIs and bindings
 - [Cloudflare Workers](https://workers.cloudflare.com/) for edge computing
 - [Tailwind CSS](https://tailwindcss.com/) for styling
 - [TypeScript](https://www.typescriptlang.org/) for type safety
