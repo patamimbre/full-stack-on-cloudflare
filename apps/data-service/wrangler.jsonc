@@ -1,0 +1,84 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "data-service",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-06-17",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	"browser": {
+		"binding": "VIRTUAL_BROWSER"
+	},
+	"ai": {
+		"binding": "AI"
+	},
+	"r2_buckets": [
+		{
+			"binding": "BUCKET",
+			"bucket_name": "smart-links-eval-stage",
+			"experimental_remote": true
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_id": "817f8006-add5-42cc-b9d3-2f7f61ceb1dd",
+			"experimental_remote": true
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "c514e746cc49418e98e3339d49086996",
+			"experimental_remote": true
+		}
+	],
+	"queues": {
+		"consumers": [
+			{
+				"queue": "smart-links-data-queue-stage"
+			}
+		],
+		"producers": [
+			{
+				"binding": "QUEUE",
+				"queue": "smart-links-data-queue-stage"
+			}
+		]
+	},
+	"workflows": [
+		{
+			"binding": "DESTINATION_EVALUATION_WORKFLOW",
+			"name": "destination-evaluation-workflow",
+			"class_name": "DestinationEvaluationWorkflow",
+			"experimental_remote": true
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "EVALUATIONS_SCHEDULER",
+				"class_name": "EvaluationsScheduler"
+			},
+			{
+				"name": "LINK_CLICK_TRACKER_OBJECT",
+				"class_name": "LinkClickTracker"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_classes": ["EvaluationsScheduler"]
+		},
+		{
+			"tag": "v2",
+			"new_sqlite_classes": ["LinkClickTracker"]
+		}
+	]
+}
