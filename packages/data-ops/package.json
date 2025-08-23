@@ -4,10 +4,14 @@
   "description": "Helper methods to interface with data",
   "scripts": {
     "build": "tsc -p tsconfig.json --outDir ./dist && tsc-alias",
-    "pull": "drizzle-kit pull --config drizzle.config.ts",
-    "migrate": "drizzle-kit migrate --config drizzle.config.ts",
-    "generate": "drizzle-kit generate --config drizzle.config.ts",
-    "studio": "drizzle-kit studio --config drizzle.config.ts",
+    "pull:stage": "dotenvx run -f .env.stage -- drizzle-kit pull --config drizzle.config.ts",
+    "pull:prod": "dotenvx run -f .env.production -- drizzle-kit pull --config drizzle.config.ts",
+    "migrate:stage": "dotenvx run -f .env.stage -- drizzle-kit migrate --config drizzle.config.ts",
+    "migrate:prod": "dotenvx run -f .env.production -- drizzle-kit migrate --config drizzle.config.ts",
+    "generate:stage": "dotenvx run -f .env.stage -- drizzle-kit generate --config drizzle.config.ts",
+    "generate:prod": "dotenvx run -f .env.production -- drizzle-kit generate --config drizzle.config.ts",
+    "studio:stage": "dotenvx run -f .env.stage -- drizzle-kit studio --config drizzle.config.ts",
+    "studio:prod": "dotenvx run -f .env.production -- drizzle-kit studio --config drizzle.config.ts",
     "better-auth-generate": "npx @better-auth/cli generate --config auth-gen/auth.ts"
   },
   "exports": {
@@ -49,7 +53,9 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250405.0",
+    "@dotenvx/dotenvx": "^1.49.0",
     "@types/node": "^22.15.19",
+    "dotenv": "^17.2.1",
     "drizzle-kit": "^0.31.1",
     "tsc-alias": "^1.8.16",
     "wrangler": "^4.22.0"

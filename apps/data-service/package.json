@@ -5,6 +5,7 @@
 	"scripts": {
 		"@repo/data-ops": "workspace:*",
 		"stage:deploy": "wrangler deploy --env stage",
+		"prod:deploy": "wrangler deploy --env production",
 		"dev": "wrangler dev --env stage --x-remote-bindings",
 		"start": "wrangler dev --env stage",
 		"test": "vitest",
