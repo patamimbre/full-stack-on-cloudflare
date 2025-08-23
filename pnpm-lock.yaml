@@ -305,8 +305,8 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
       zod:
-        specifier: ^3.25.67
-        version: 3.25.67
+        specifier: ^4.0.17
+        version: 4.0.17
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250405.0

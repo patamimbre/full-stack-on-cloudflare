@@ -8,11 +8,10 @@
     "pull:prod": "dotenvx run -f .env.production -- drizzle-kit pull --config drizzle.config.ts",
     "migrate:stage": "dotenvx run -f .env.stage -- drizzle-kit migrate --config drizzle.config.ts",
     "migrate:prod": "dotenvx run -f .env.production -- drizzle-kit migrate --config drizzle.config.ts",
-    "generate:stage": "dotenvx run -f .env.stage -- drizzle-kit generate --config drizzle.config.ts",
-    "generate:prod": "dotenvx run -f .env.production -- drizzle-kit generate --config drizzle.config.ts",
+    "generate": "dotenvx run -f .env.stage -- drizzle-kit generate --config drizzle.config.ts",
     "studio:stage": "dotenvx run -f .env.stage -- drizzle-kit studio --config drizzle.config.ts",
     "studio:prod": "dotenvx run -f .env.production -- drizzle-kit studio --config drizzle.config.ts",
-    "better-auth-generate": "npx @better-auth/cli generate --config auth-gen/auth.ts"
+    "better-auth-generate": "npx @better-auth/cli generate --config auth-gen/auth.ts --output=src/drizzle-out/auth-schema.ts"
   },
   "exports": {
     "./database": {
@@ -32,8 +31,8 @@
       "default": "./dist/durable-objects-helpers/*.js"
     },
     "./auth": {
-      "types": "./dist/better-auth/auth.d.ts",
-      "default": "./dist/better-auth/auth.js"
+      "types": "./dist/src/auth.d.ts",
+      "default": "./dist/src/auth.js"
     }
   },
   "keywords": [],
@@ -49,7 +48,7 @@
     "nanoid": "^5.1.5",
     "stripe": "^18.4.0",
     "uuid": "^11.1.0",
-    "zod": "^3.25.67"
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250405.0",
